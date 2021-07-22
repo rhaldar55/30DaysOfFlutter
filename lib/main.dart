@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_catalog/pages/home_page.dart';
+import 'package:flutter_catalog/pages/login_page.dart';
 
 void main(){
   runApp(MyApp());
@@ -7,24 +10,30 @@ void main(){
 
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
-
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
 
     return MaterialApp(
-      home: Material(
-        child: Center(
-          child: Container(
-            child: Text("Welcome to 30 days of Flutter"),
-          ),
-        ),
+      //home:HomePage(),
+
+      themeMode: ThemeMode.light,
+      theme: ThemeData(
+        primaryColor: Colors.green
       ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark
+      ),
+      initialRoute: "/home",
+      routes: {
+        "/": (context) => LogInPage(),
+        "/home": (context) => HomePage(),
+        "/login":(context)=> LogInPage()
+
+      },
     );
   }
 }
